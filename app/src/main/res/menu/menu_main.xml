@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+	  xmlns:app="http://schemas.android.com/apk/res-auto"
+	  xmlns:tools="http://schemas.android.com/tools"
+	  tools:context="com.poterion.light.raspiw2812.android.com.poterion.raspi.w2812.android.MainActivity">
+	<item
+		android:id="@+id/action_new"
+		android:icon="@drawable/ic_new_white"
+		android:orderInCategory="100"
+		android:title="@string/action_new"
+		app:showAsAction="ifRoom"/>
+	<item
+		android:id="@+id/action_save"
+		android:icon="@drawable/ic_save_white"
+		android:orderInCategory="100"
+		android:title="@string/action_save"
+		app:showAsAction="ifRoom"/>
+</menu>

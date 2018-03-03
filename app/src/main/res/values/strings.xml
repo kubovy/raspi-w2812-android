@@ -1,0 +1,28 @@
+<resources>
+	<string name="app_name">Raspi W2812 Light</string>
+	<string name="status_connected">%s (Connected)</string>
+	<string name="status_disconnected">%s (Disconnected)</string>
+	<string name="status_failed">%s (Failed)</string>
+	<string name="tab_sets">Sets</string>
+	<string name="tab_list">List</string>
+	<string name="tab_form">Light</string>
+	<string name="action_new">New</string>
+	<string name="action_save">Save</string>
+	<string name="select_device">Select Device:</string>
+	<string name="error_changing_light_failed">Changing light failed!</string>
+	<string name="units_ms">ms</string>
+	<string name="form_label_color_1">color_1</string>
+	<string name="form_label_color_2">Color 2</string>
+	<string name="form_label_color_3">Color 3</string>
+	<string name="form_label_color_4">Color 4</string>
+	<string name="form_label_color_5">Color 5</string>
+	<string name="form_label_color_6">Color 6</string>
+	<string name="form_label_wait">Wait</string>
+	<string name="form_label_width">Width</string>
+	<string name="form_label_fading">Fading</string>
+	<string name="form_label_minimum">Minimum</string>
+	<string name="form_label_maximum">Maximum</string>
+	<string name="form_default_0percent">0%</string>
+	<string name="form_default_100percent">100%</string>
+	<string name="send_light_configuration">Send light configuration</string>
+</resources>

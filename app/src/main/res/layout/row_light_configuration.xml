@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	>
+
+	<android.support.constraint.ConstraintLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+		<TextView
+			android:id="@+id/testTitle"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="8dp"
+			android:layout_marginLeft="8dp"
+			android:layout_marginStart="8dp"
+			android:layout_marginTop="8dp"
+			android:text=""
+			app:layout_constraintBottom_toBottomOf="@+id/textColor1"
+			app:layout_constraintEnd_toStartOf="@+id/textColor1"
+			app:layout_constraintHorizontal_bias="0.5"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="@+id/textColor1"/>
+
+
+		<TextView
+			android:id="@+id/textColor1"
+			android:layout_width="10dp"
+			android:layout_height="0dp"
+			app:layout_constraintBottom_toBottomOf="@+id/textColor2"
+			app:layout_constraintEnd_toStartOf="@+id/textColor2"
+			app:layout_constraintHorizontal_bias="0.5"
+			app:layout_constraintStart_toEndOf="@+id/testTitle"
+			app:layout_constraintTop_toTopOf="@+id/textColor2"/>
+
+		<TextView
+			android:id="@+id/textColor2"
+			android:layout_width="10dp"
+			android:layout_height="0dp"
+			app:layout_constraintBottom_toBottomOf="@+id/textColor3"
+			app:layout_constraintEnd_toStartOf="@+id/textColor3"
+			app:layout_constraintHorizontal_bias="0.5"
+			app:layout_constraintStart_toEndOf="@+id/textColor1"
+			app:layout_constraintTop_toTopOf="@+id/textColor3"/>
+
+		<TextView
+			android:id="@+id/textColor3"
+			android:layout_width="10dp"
+			android:layout_height="0dp"
+			app:layout_constraintBottom_toBottomOf="@+id/textColor4"
+			app:layout_constraintEnd_toStartOf="@+id/textColor4"
+			app:layout_constraintHorizontal_bias="0.5"
+			app:layout_constraintStart_toEndOf="@+id/textColor2"
+			app:layout_constraintTop_toTopOf="@+id/textColor4"/>
+
+		<TextView
+			android:id="@+id/textColor4"
+			android:layout_width="10dp"
+			android:layout_height="0dp"
+			app:layout_constraintBottom_toBottomOf="@+id/textColor5"
+			app:layout_constraintEnd_toStartOf="@+id/textColor5"
+			app:layout_constraintHorizontal_bias="0.5"
+			app:layout_constraintStart_toEndOf="@+id/textColor3"
+			app:layout_constraintTop_toTopOf="@+id/textColor5"/>
+
+		<TextView
+			android:id="@+id/textColor5"
+			android:layout_width="10dp"
+			android:layout_height="0dp"
+			app:layout_constraintBottom_toBottomOf="@+id/textColor6"
+			app:layout_constraintEnd_toStartOf="@+id/textColor6"
+			app:layout_constraintHorizontal_bias="0.5"
+			app:layout_constraintStart_toEndOf="@+id/textColor4"
+			app:layout_constraintTop_toTopOf="@+id/textColor6"/>
+
+		<TextView
+			android:id="@+id/textColor6"
+			android:layout_width="10dp"
+			android:layout_height="0dp"
+			app:layout_constraintBottom_toBottomOf="@+id/imageButton"
+			app:layout_constraintEnd_toStartOf="@+id/imageButton"
+			app:layout_constraintHorizontal_bias="0.5"
+			app:layout_constraintStart_toEndOf="@+id/textColor5"
+			app:layout_constraintTop_toTopOf="@+id/imageButton"/>
+
+		<ImageButton
+			android:id="@+id/imageButton"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="8dp"
+			android:contentDescription="@string/send_light_configuration"
+			android:focusable="false"
+			android:focusableInTouchMode="false"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintHorizontal_bias="0.5"
+			app:layout_constraintStart_toEndOf="@+id/textColor6"
+			app:layout_constraintTop_toTopOf="parent"
+			app:srcCompat="@drawable/ic_send"/>
+
+	</android.support.constraint.ConstraintLayout>
+</layout>
