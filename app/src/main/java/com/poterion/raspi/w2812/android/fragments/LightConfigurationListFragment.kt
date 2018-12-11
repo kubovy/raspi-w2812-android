@@ -48,11 +48,13 @@ class LightConfigurationListFragment : Fragment(), Page {
 		super.onCreate(savedInstanceState)
 		setHasOptionsMenu(true)
 		realm = Realm.getDefaultInstance()
-		LocalBroadcastManager.getInstance(context).registerReceiver(bluetoothConnectionBroadcastReceiver, IntentFilter().apply {
-			addAction(BluetoothSerial.BLUETOOTH_CONNECTED)
-			addAction(BluetoothSerial.BLUETOOTH_DISCONNECTED)
-			addAction(BluetoothSerial.BLUETOOTH_FAILED)
-		})
+		context?.also { context ->
+			LocalBroadcastManager.getInstance(context).registerReceiver(bluetoothConnectionBroadcastReceiver, IntentFilter().apply {
+				addAction(BluetoothSerial.BLUETOOTH_CONNECTED)
+				addAction(BluetoothSerial.BLUETOOTH_DISCONNECTED)
+				addAction(BluetoothSerial.BLUETOOTH_FAILED)
+			})
+		}
 	}
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -67,7 +69,7 @@ class LightConfigurationListFragment : Fragment(), Page {
 					?.also { interaction?.editLightConfiguration(it) }
 		}
 		availableSubscription = Bluetooth.available.subscribe { if (it) root.buttonSend.show() else root.buttonSend.hide() }
-		root.buttonSend.setOnClickListener {
+		root.buttonSend.setOnClickListener { _ ->
 			realm?.where(RealmLightConfiguration::class.java)
 					?.equalTo("set", interaction?.set ?: "")
 					?.sort("order")
@@ -102,7 +104,9 @@ class LightConfigurationListFragment : Fragment(), Page {
 	}
 
 	override fun onDestroy() {
-		LocalBroadcastManager.getInstance(context).unregisterReceiver(bluetoothConnectionBroadcastReceiver)
+		context?.also { context ->
+			LocalBroadcastManager.getInstance(context).unregisterReceiver(bluetoothConnectionBroadcastReceiver)
+		}
 		realm?.close()
 		realm = null
 		super.onDestroy()

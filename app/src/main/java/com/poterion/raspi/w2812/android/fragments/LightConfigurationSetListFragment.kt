@@ -52,7 +52,7 @@ class LightConfigurationSetListFragment : Fragment(), Page {
 					?.also { interaction?.showLightConfigurationSet(it.toString()) }
 		}
 		realm?.where(RealmLightConfiguration::class.java)
-				?.distinctValues("set")
+				?.distinct("set")
 				?.sort("set")
 				?.findAllAsync()
 				?.also { sets ->

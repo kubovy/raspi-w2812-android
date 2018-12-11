@@ -21,7 +21,10 @@ import java.util.*
  * @author jpetrocik
  * @author Jan Kubovy &lt;jan@kubovy.eu&gt;
  */
-class BluetoothSerial(private var context: Context, private val bluetoothDevice: BluetoothDevice, private var messageHandler: MessageHandler) {
+class BluetoothSerial(private var context: Context,
+					  private val bluetoothDevice: BluetoothDevice,
+					  private var messageHandler: MessageHandler) {
+
 	companion object {
 		const val BLUETOOTH_CONNECTED = "bluetooth-connection-started"
 		const val BLUETOOTH_DISCONNECTED = "bluetooth-connection-lost"
@@ -30,10 +33,10 @@ class BluetoothSerial(private var context: Context, private val bluetoothDevice:
 	}
 
 	var connected = false
-	private var serialSocket: BluetoothSocket? = null
+	private var serialOutboundSocket: BluetoothSocket? = null
 	private var serialInputStream: InputStream? = null
 	private var serialOutputStream: OutputStream? = null
-	private var serialReader: SerialReader? = null
+	//private var serialReader: SerialReader? = null
 	private var connectionTask: AsyncTask<Void, Void, BluetoothSocket>? = null
 
 	private val bluetoothReceiver = object : BroadcastReceiver() {
@@ -84,17 +87,17 @@ class BluetoothSerial(private var context: Context, private val bluetoothDevice:
 			/**
 			 * AsyncTask to handle the establishing of a bluetooth connection
 			 */
-			connectionTask = ConnectionTask(context, bluetoothDevice, { socket ->
-				serialSocket = socket
+			connectionTask = ConnectionTask(context, bluetoothDevice, 7) { socket ->
+				serialOutboundSocket = socket
 				serialInputStream = socket.inputStream
 				serialOutputStream = socket.outputStream
-				serialInputStream?.also { serialInputStream ->
-					serialReader = SerialReader(serialInputStream, true, messageHandler)
-					serialReader?.start()
-				}
+				serialInputStream//?.also { serialInputStream ->
+				//serialReader = SerialReader(serialInputStream, true, messageHandler)
+				//serialReader?.start()
+				//}
 				connected = true
 				LocalBroadcastManager.getInstance(context).sendBroadcast(Intent(BLUETOOTH_CONNECTED))
-			})
+			}
 			connectionTask?.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR)
 		}
 	}
@@ -111,7 +114,7 @@ class BluetoothSerial(private var context: Context, private val bluetoothDevice:
 	fun close() {
 		//onPause()
 		connected = false
-		serialReader?.disconnect()
+		//serialReader?.disconnect()
 
 		try {
 			serialInputStream?.close()
@@ -126,7 +129,7 @@ class BluetoothSerial(private var context: Context, private val bluetoothDevice:
 		}
 
 		try {
-			serialSocket?.close()
+			serialOutboundSocket?.close()
 		} catch (e: Exception) {
 			Log.e(LOG_TAG, "Failed closing socket")
 		}

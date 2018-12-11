@@ -2,7 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
 		xmlns:app="http://schemas.android.com/apk/res-auto"
 		xmlns:tools="http://schemas.android.com/tools"
-		tools:context="com.poterion.light.raspiw2812.android.com.poterion.raspi.w2812.android.fragments.LightConfigurationFormFragment">
+		tools:context="com.poterion.raspi.w2812.android.fragments.LightConfigurationFormFragment">
 
 	<android.support.constraint.ConstraintLayout
 		android:layout_width="match_parent"

@@ -207,10 +207,10 @@ class MainActivity : AppCompatActivity(), ActivityCommunicationInterface {
 							?.bondedDevices
 							?.sortedBy { it.name }?.forEach { arrayAdapter.add(it.name) }
 
-					setAdapter(arrayAdapter, { _, which ->
+					setAdapter(arrayAdapter) { _, which ->
 						deviceName = arrayAdapter.getItem(which)
 						initialize()
-					})
+					}
 				}.show()
 			} else {
 				initialize()
