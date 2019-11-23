@@ -8,7 +8,7 @@
 		android:layout_height="match_parent">
 
 		<TextView
-			android:id="@+id/testTitle"
+			android:id="@+id/textTitle"
 			android:layout_width="0dp"
 			android:layout_height="wrap_content"
 			android:layout_marginBottom="8dp"
@@ -34,7 +34,7 @@
 			android:focusableInTouchMode="false"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintHorizontal_bias="0.5"
-			app:layout_constraintStart_toEndOf="@+id/testTitle"
+			app:layout_constraintStart_toEndOf="@+id/textTitle"
 			app:layout_constraintTop_toTopOf="parent"
 			app:srcCompat="@drawable/ic_send"/>
 	</android.support.constraint.ConstraintLayout>

@@ -1,6 +1,6 @@
-# Raspi W2812 Light App
+# DevOps Light Controller App
 
-A quite simple android app for controlling the [Raspi W2812 Light](https://blog.kubovy.eu/2018/02/11/status-light-with-raspberry-pi-zero-and-w2812-led-strip/) 
+A quite simple android app for controlling the [DevOps Light](https://blog.kubovy.eu/2018/02/11/status-light-with-raspberry-pi-zero-and-w2812-led-strip/)
 
 In the beginning it shows you the list of paired devices where you need to pick the one representing the 
 [Raspi W2812 Light](https://blog.kubovy.eu/2018/02/11/status-light-with-raspberry-pi-zero-and-w2812-led-strip/). Note 
@@ -29,4 +29,4 @@ save our configuration for later we need to press the “save” button in the a
 
 You can find the app in the store:
 
-[<img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" width="180">](https://play.google.com/store/apps/details?id=com.poterion.raspi.w2812.android)
+[<img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" width="180">](https://play.google.com/store/apps/details?id=com.poterion.monitor.android)
