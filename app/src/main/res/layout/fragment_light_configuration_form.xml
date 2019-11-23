@@ -1,78 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-		xmlns:app="http://schemas.android.com/apk/res-auto"
-		xmlns:tools="http://schemas.android.com/tools"
-		tools:context="com.poterion.raspi.w2812.android.fragments.LightConfigurationFormFragment">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context="com.poterion.monitor.android.fragments.LightConfigurationFormFragment">
 
 	<android.support.constraint.ConstraintLayout
 		android:layout_width="match_parent"
-		android:layout_height="match_parent">
+		android:layout_height="wrap_content"
+		android:scrollbars="vertical">
 
 		<android.support.design.widget.FloatingActionButton
 			android:id="@+id/buttonSend"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_marginBottom="16dp"
 			android:layout_marginEnd="16dp"
 			android:layout_marginRight="16dp"
+			android:layout_marginBottom="16dp"
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintEnd_toEndOf="parent"
-			app:srcCompat="@drawable/ic_send_white"/>
+			app:srcCompat="@drawable/ic_send_white" />
 
 		<Spinner
 			android:id="@+id/spinnerPattern"
 			android:layout_width="0dp"
 			android:layout_height="24dp"
-			android:layout_marginEnd="8dp"
-			android:layout_marginStart="8dp"
 			android:layout_marginTop="8dp"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/autoCompleteSet"/>
+			app:layout_constraintTop_toBottomOf="@+id/autoCompleteSet" />
 
 		<Button
 			android:id="@+id/buttonColor1"
 			android:layout_width="0dp"
 			android:layout_height="wrap_content"
-			android:layout_marginTop="8dp"
 			android:text="@string/form_label_color_1"
 			app:layout_constraintEnd_toStartOf="@+id/buttonColor2"
 			app:layout_constraintHorizontal_bias="0.5"
 			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/spinnerPattern"/>
+			app:layout_constraintTop_toBottomOf="@+id/spinnerColor" />
 
 		<Button
 			android:id="@+id/buttonColor2"
 			android:layout_width="0dp"
 			android:layout_height="wrap_content"
-			android:layout_marginTop="8dp"
 			android:text="@string/form_label_color_2"
 			app:layout_constraintEnd_toStartOf="@+id/buttonColor3"
 			app:layout_constraintHorizontal_bias="0.5"
 			app:layout_constraintStart_toEndOf="@+id/buttonColor1"
-			app:layout_constraintTop_toBottomOf="@+id/spinnerPattern"/>
+			app:layout_constraintTop_toBottomOf="@+id/spinnerColor" />
 
 		<Button
 			android:id="@+id/buttonColor3"
 			android:layout_width="0dp"
 			android:layout_height="wrap_content"
-			android:layout_marginTop="8dp"
 			android:text="@string/form_label_color_3"
 			app:layout_constraintEnd_toStartOf="@+id/buttonColor4"
 			app:layout_constraintHorizontal_bias="0.5"
 			app:layout_constraintStart_toEndOf="@+id/buttonColor2"
-			app:layout_constraintTop_toBottomOf="@+id/spinnerPattern"/>
+			app:layout_constraintTop_toBottomOf="@+id/spinnerColor" />
 
 		<Button
 			android:id="@+id/buttonColor4"
 			android:layout_width="0dp"
 			android:layout_height="wrap_content"
-			android:layout_marginTop="8dp"
 			android:text="@string/form_label_color_4"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintHorizontal_bias="0.5"
 			app:layout_constraintStart_toEndOf="@+id/buttonColor3"
-			app:layout_constraintTop_toBottomOf="@+id/spinnerPattern"/>
+			app:layout_constraintTop_toTopOf="@+id/buttonColor3" />
 
 		<Button
 			android:id="@+id/buttonColor5"
@@ -83,31 +80,27 @@
 			app:layout_constraintEnd_toStartOf="@+id/buttonColor6"
 			app:layout_constraintHorizontal_bias="0.5"
 			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/buttonColor1"/>
+			app:layout_constraintTop_toBottomOf="@+id/buttonColor1" />
 
 		<Button
 			android:id="@+id/buttonColor6"
 			android:layout_width="0dp"
 			android:layout_height="wrap_content"
-			android:layout_marginEnd="8dp"
-			android:layout_marginRight="8dp"
 			android:layout_marginTop="8dp"
 			android:text="@string/form_label_color_6"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintHorizontal_bias="0.5"
 			app:layout_constraintStart_toEndOf="@+id/buttonColor5"
-			app:layout_constraintTop_toBottomOf="@+id/buttonColor4"/>
+			app:layout_constraintTop_toBottomOf="@+id/buttonColor4" />
 
 		<TextView
 			android:id="@+id/textView"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_marginLeft="8dp"
-			android:layout_marginStart="8dp"
 			android:layout_marginTop="8dp"
-			android:text="@string/form_label_wait"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/buttonColor5"/>
+			android:text="@string/form_label_delay"
+			app:layout_constraintStart_toStartOf="@+id/editDelay"
+			app:layout_constraintTop_toBottomOf="@+id/buttonColor5" />
 
 		<TextView
 			android:id="@+id/textView2"
@@ -116,7 +109,7 @@
 			android:layout_marginTop="8dp"
 			android:text="@string/form_label_width"
 			app:layout_constraintStart_toStartOf="@+id/editWidth"
-			app:layout_constraintTop_toBottomOf="@+id/buttonColor5"/>
+			app:layout_constraintTop_toBottomOf="@+id/buttonColor5" />
 
 		<TextView
 			android:id="@+id/textFading"
@@ -125,125 +118,143 @@
 			android:layout_marginTop="8dp"
 			android:text="@string/form_label_fading"
 			app:layout_constraintStart_toStartOf="@+id/editFading"
-			app:layout_constraintTop_toBottomOf="@+id/buttonColor5"/>
+			app:layout_constraintTop_toBottomOf="@+id/buttonColor5" />
 
 		<TextView
 			android:id="@+id/textView4"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_marginLeft="8dp"
-			android:layout_marginStart="8dp"
 			android:layout_marginTop="8dp"
 			android:text="@string/form_label_minimum"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/editWait"/>
+			app:layout_constraintStart_toStartOf="@+id/seekMinimum"
+			app:layout_constraintTop_toBottomOf="@+id/editDelay" />
 
 		<TextView
 			android:id="@+id/textView5"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_marginLeft="8dp"
-			android:layout_marginStart="8dp"
 			android:layout_marginTop="8dp"
 			android:text="@string/form_label_maximum"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/seekMinimum"/>
+			app:layout_constraintStart_toStartOf="@+id/seekMaximum"
+			app:layout_constraintTop_toBottomOf="@+id/seekMinimum" />
 
 		<EditText
-			android:id="@+id/editWait"
+			android:id="@+id/editDelay"
 			android:layout_width="0dp"
 			android:layout_height="wrap_content"
-			android:layout_marginLeft="8dp"
-			android:layout_marginStart="8dp"
 			android:ems="10"
 			android:inputType="number"
 			app:layout_constraintEnd_toStartOf="@+id/editWidth"
-			app:layout_constraintHorizontal_bias="0.5"
 			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/textView"/>
+			app:layout_constraintTop_toBottomOf="@+id/textView" />
 
 		<EditText
 			android:id="@+id/editWidth"
 			android:layout_width="0dp"
 			android:layout_height="wrap_content"
-			android:layout_marginLeft="8dp"
-			android:layout_marginStart="8dp"
 			android:ems="10"
 			android:inputType="number"
 			app:layout_constraintEnd_toStartOf="@+id/editFading"
-			app:layout_constraintHorizontal_bias="0.5"
-			app:layout_constraintStart_toEndOf="@+id/editWait"
-			app:layout_constraintTop_toBottomOf="@+id/textView2"/>
+			app:layout_constraintStart_toEndOf="@+id/editDelay"
+			app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
 		<EditText
 			android:id="@+id/editFading"
 			android:layout_width="0dp"
 			android:layout_height="wrap_content"
-			android:layout_marginEnd="8dp"
-			android:layout_marginStart="8dp"
 			android:ems="10"
 			android:inputType="number"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintHorizontal_bias="0.5"
+			app:layout_constraintEnd_toStartOf="@+id/editTimeout"
 			app:layout_constraintStart_toEndOf="@+id/editWidth"
-			app:layout_constraintTop_toBottomOf="@+id/textFading"/>
+			app:layout_constraintTop_toBottomOf="@+id/textFading" />
 
 		<SeekBar
 			android:id="@+id/seekMinimum"
 			android:layout_width="0dp"
 			android:layout_height="wrap_content"
 			android:layout_marginEnd="8dp"
-			android:layout_marginStart="8dp"
 			android:max="100"
 			android:progress="0"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/textView4"/>
+			app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
 		<SeekBar
 			android:id="@+id/seekMaximum"
 			android:layout_width="0dp"
 			android:layout_height="wrap_content"
 			android:layout_marginEnd="8dp"
-			android:layout_marginStart="8dp"
 			android:max="100"
 			android:progress="100"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/textView5"/>
+			app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
 		<TextView
 			android:id="@+id/labelMinimum"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_marginLeft="8dp"
 			android:layout_marginStart="8dp"
+			android:layout_marginLeft="8dp"
 			android:layout_marginTop="8dp"
 			android:text="@string/form_default_0percent"
 			app:layout_constraintStart_toEndOf="@+id/textView4"
-			app:layout_constraintTop_toBottomOf="@+id/editWait"/>
+			app:layout_constraintTop_toBottomOf="@+id/editDelay" />
 
 		<TextView
 			android:id="@+id/labelMaximum"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_marginLeft="8dp"
 			android:layout_marginStart="8dp"
+			android:layout_marginLeft="8dp"
 			android:layout_marginTop="8dp"
 			android:text="@string/form_default_100percent"
 			app:layout_constraintStart_toEndOf="@+id/textView5"
-			app:layout_constraintTop_toBottomOf="@+id/seekMinimum"/>
+			app:layout_constraintTop_toBottomOf="@+id/seekMinimum" />
 
 		<AutoCompleteTextView
 			android:id="@+id/autoCompleteSet"
 			android:layout_width="0dp"
 			android:layout_height="wrap_content"
-			android:layout_marginEnd="8dp"
-			android:layout_marginStart="8dp"
 			android:layout_marginTop="8dp"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toTopOf="parent"/>
+			app:layout_constraintTop_toTopOf="parent" />
+
+		<TextView
+			android:id="@+id/textView3"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="8dp"
+			android:text="@string/form_label_timeout"
+			app:layout_constraintStart_toStartOf="@+id/editTimeout"
+			app:layout_constraintTop_toBottomOf="@+id/buttonColor5" />
+
+		<EditText
+			android:id="@+id/editTimeout"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:ems="10"
+			android:inputType="numberDecimal"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toEndOf="@+id/editFading"
+			app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+		<android.support.constraint.Guideline
+			android:id="@+id/guideline"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			app:layout_constraintGuide_begin="20dp" />
+
+		<Spinner
+			android:id="@+id/spinnerColor"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="8dp"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/spinnerPattern" />
 
 	</android.support.constraint.ConstraintLayout>
-</layout>
+</ScrollView>

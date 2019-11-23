@@ -81,7 +81,7 @@ pipeline {
         buildDiscarder(logRotator(numToKeepStr: '20', artifactNumToKeepStr: '20'))
     }
     environment {
-        PACKAGE = 'com.poterion.logbook'
+        PACKAGE = 'com.poterion.monitor.android'
         ANDROID_SDK_MIN = 16
         JAVA7_HOME = "/usr/lib/jvm/java-7-oracle"
         JAVA8_HOME = "/usr/lib/jvm/java-8-oracle"
@@ -133,7 +133,7 @@ pipeline {
                             userRemoteConfigs                : [
                                     [
                                             credentialsId: 'poterion-git',
-                                            url          : 'ssh://git@bitbucket.intra:7999/monitor/raspi-w2812-android.git'
+                                            url          : 'ssh://git@bitbucket.intra:22999/monitor/android.git'
                                     ]
                             ]
                     ])
@@ -143,7 +143,7 @@ pipeline {
         }
         stage('Build') {
             //when { expression { BRANCH_NAME == "skip" } }
-            when { expression { BRANCH_NAME == 'master' || BRANCH_NAME ==~ /(feature|bugfix)\/.*/ || BRANCH_NAME ==~ /PR-\d+/ } }
+            //when { expression { BRANCH_NAME == 'master' || BRANCH_NAME ==~ /(feature|bugfix)\/.*/ || BRANCH_NAME ==~ /PR-\d+/ } }
             steps {
                 setup()
                 lock(resource: 'ws2812-build-android', inversePrecedence: true) {
@@ -154,7 +154,7 @@ pipeline {
         }
         stage('Unit Tests') {
             //when { expression { BRANCH_NAME == "skip" } }
-            when { expression { BRANCH_NAME == 'master' || BRANCH_NAME ==~ /(feature|bugfix)\/.*/ || BRANCH_NAME ==~ /PR-\d+/ } }
+            //when { expression { BRANCH_NAME == 'master' || BRANCH_NAME ==~ /(feature|bugfix)\/.*/ || BRANCH_NAME ==~ /PR-\d+/ } }
             steps {
                 setup()
                 lock(resource: 'ws2812-test-android', inversePrecedence: true) {
@@ -170,7 +170,7 @@ pipeline {
         }
         stage('Instrumentation Tests') {
             //when { expression { BRANCH_NAME == "skip" } }
-            when { expression { BRANCH_NAME == 'master' || BRANCH_NAME ==~ /(feature|bugfix)\/.*/ } }
+            //when { expression { BRANCH_NAME == 'master' || BRANCH_NAME ==~ /(feature|bugfix)\/.*/ } }
             steps {
                 setup()
                 lock(resource: 'android-emulator', inversePrecedence: true) {
@@ -197,7 +197,7 @@ pipeline {
         }
         stage('Build Release') {
             //when { expression { BRANCH_NAME == "skip" } }
-            when { expression { BRANCH_NAME == 'master' || BRANCH_NAME ==~ /(feature|bugfix|release)\/.*/ || BRANCH_NAME ==~ /PR-\d+/ } }
+            //when { expression { BRANCH_NAME == 'master' || BRANCH_NAME ==~ /(feature|bugfix|release)\/.*/ || BRANCH_NAME ==~ /PR-\d+/ } }
             steps {
                 setup()
                 lock(resource: 'ws2812-build-release-android', inversePrecedence: true) {
@@ -213,7 +213,7 @@ pipeline {
             post {
                 always {
                     //sh './gradlew --daemon --stacktrace uninstallAll'
-                    archiveArtifacts artifacts: 'app/build/reports/lint-results-*.xml,app/build/outputs/apk/release/com.poterion.raspi.w2812.android-*.apk', allowEmptyArchive: true
+                    archiveArtifacts artifacts: 'app/build/reports/lint-results-*.xml,app/build/outputs/apk/release/com.poterion.monitor.android-*.apk', allowEmptyArchive: true
                     publishHTML([allowMissing         : true,
                                  alwaysLinkToLastBuild: true,
                                  keepAll              : true,
