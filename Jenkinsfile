@@ -146,7 +146,7 @@ pipeline {
             //when { expression { BRANCH_NAME == 'master' || BRANCH_NAME ==~ /(feature|bugfix)\/.*/ || BRANCH_NAME ==~ /PR-\d+/ } }
             steps {
                 setup()
-                lock(resource: 'ws2812-build-android', inversePrecedence: true) {
+                lock(resource: 'monitor-build-android', inversePrecedence: true) {
                     sh './gradlew --daemon --stacktrace clean assembleDebug'
                     milestone(10)
                 }
@@ -157,7 +157,7 @@ pipeline {
             //when { expression { BRANCH_NAME == 'master' || BRANCH_NAME ==~ /(feature|bugfix)\/.*/ || BRANCH_NAME ==~ /PR-\d+/ } }
             steps {
                 setup()
-                lock(resource: 'ws2812-test-android', inversePrecedence: true) {
+                lock(resource: 'monitor-test-android', inversePrecedence: true) {
                     sh './gradlew --daemon --stacktrace testDebugUnitTest'
                     milestone(30)
                 }
@@ -200,7 +200,7 @@ pipeline {
             //when { expression { BRANCH_NAME == 'master' || BRANCH_NAME ==~ /(feature|bugfix|release)\/.*/ || BRANCH_NAME ==~ /PR-\d+/ } }
             steps {
                 setup()
-                lock(resource: 'ws2812-build-release-android', inversePrecedence: true) {
+                lock(resource: 'monitor-build-release-android', inversePrecedence: true) {
                     //sh 'export SDK_VERSION_MIN=16'
                     withCredentials([file(credentialsId: 'keystore-file', variable: 'KEYSTORE_FILE'),
                                      string(credentialsId: 'keystore-password', variable: 'KEYSTORE_PASSWORD'),
@@ -260,14 +260,14 @@ pipeline {
                                     string(defaultValue: '20', description: 'User Fraction', name: 'userFraction', trim: true),
                                     booleanParam(defaultValue: true, description: 'Untrack old releases', name: 'untrackOld')])
                         } else {
-                            parameters.add(new ChoiceParameterDefinition('stage', ['alpha'] as String[], 'Stage'))
+                            parars.add(new ChoiceParameterDefinition('stage', ['alpha'] as String[], 'Stage'))
                         }
                         parameters.addAll([])
                         release = input id: 'should-release',
                                 message: 'Release',
                                 ok: 'Yes',
                                 parameters: parameters,
-                                //submitter: 'project-ws2812',
+                                //submitter: 'jenkins',
                                 submitterParameter: 'approvedBy'
                         doPublish = true
                     } catch (err) { // input false
@@ -282,7 +282,7 @@ pipeline {
                     echo "Should Release: ${doPublish}"
 
                     if (doPublish) {
-                        lock(resource: 'ws2812-release-android', inversePrecedence: true) {
+                        lock(resource: 'monitor-release-android', inversePrecedence: true) {
                             env.PUBLISH_STAGE = release['stage'] ?: 'alpha'
                             env.PUBLISH_UNTRACK_OLD = release['untrackOld'] ? "true" : "false"
                             env.PUBLISH_USER_FRACTION = ((release['userFraction'] ?: 10) as Integer) / 100
